@@ -6,7 +6,7 @@ knotty - a comprehensive SV discovery suite
 *adj*. **knot·ti·er**, **knot·ti·est**
   #. Tied or snarled in knots.
   #. Covered with knots or knobs; gnarled.
-  #. Difficult to understand or solve. See Synonyms at complex.
+  #. Difficult to understand or solve.
   #. **A comprehensive SV discovery suite**
 
 *knotty* is very much a work in progress. Not for

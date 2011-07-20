@@ -113,13 +113,14 @@ void ShowHelp(void) {
 
     cerr << "Author:  Aaron Quinlan (aaronquinlan@gmail.com)" << endl;
 
-    cerr << "Summary: Converts BAM alignments to BED6 or BEDPE format." << endl << endl;
+    cerr << "Summary: Extracts discordant and clipped BAM alignments." << endl << endl;
 
     cerr << "Usage:   " << PROGRAM_NAME << " [OPTIONS] -i <bam> " << endl << endl;
 
     cerr << "Options: " << endl;
     cerr << "\t-mc\t"   << "Minimum number of base pairs of clipping req'd (def. 10)" << endl << endl;
 
+    cerr << "Author:  Requires a name-sorted BAM file." << endl << endl;
     // end the program here
     exit(1);
 }
@@ -151,8 +152,13 @@ void ExtractSplitsAndDisordants(const string &bamFile, int minClipSize) {
     while (reader.GetNextAlignment(bam1)) {
         reader.GetNextAlignment(bam2);
         
-        if (bam1.Name != bam2.Name)
-            continue;
+        if (bam1.Name != bam2.Name) {
+            while (bam1.Name != bam2.Name)
+            {
+                bam1 = bam2;
+                reader.GetNextAlignment(bam2);
+            }
+        }
             
         // exlude duplicate reads.
         if (!bam1.IsDuplicate() && !bam2.IsDuplicate()) {

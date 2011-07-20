@@ -28,7 +28,7 @@ using namespace std;
 
 
 // define our program name
-#define PROGRAM_NAME "getClipsAndDiscordants"
+#define PROGRAM_NAME "merger"
 
 // define our parameter checking macro
 #define PARAMETER_CHECK(param, paramLen, actualLen) (strncmp(argv[i], param, min(actualLen, paramLen))== 0) && (actualLen == paramLen)
@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     // our configuration variables
     bool showHelp = false;
 
-    string bamFile = "";
+    string bamFile = "stdin";
     bool haveBam    = true;
     int  minOverlap = 10;
     bool verbose    = false;
@@ -116,6 +116,8 @@ void ShowHelp(void) {
 
     cerr << "Options: " << endl;
     cerr << "\t-mo\t"       << "Minimum number of base pairs of overlap req'd for merging (def. 10)" << endl << endl;
+    
+    cerr << "NOTE:  Requires a name-sorted BAM file." << endl << endl;
     // end the program here
     exit(1);
 }

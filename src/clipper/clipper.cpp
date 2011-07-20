@@ -28,7 +28,7 @@ using namespace std;
 
 
 // define our program name
-#define PROGRAM_NAME "getClipsAndDiscordants"
+#define PROGRAM_NAME "clipper"
 
 // define our parameter checking macro
 #define PARAMETER_CHECK(param, paramLen, actualLen) (strncmp(argv[i], param, min(actualLen, paramLen))== 0) && (actualLen == paramLen)
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
     bool showHelp = false;
 
     // input files
-    string bamFile  = "";
+    string bamFile  = "stdin";
     int minClipSize = 10;
     bool haveBam    = true;
 
@@ -120,7 +120,7 @@ void ShowHelp(void) {
     cerr << "Options: " << endl;
     cerr << "\t-mc\t"   << "Minimum number of base pairs of clipping req'd (def. 10)" << endl << endl;
 
-    cerr << "Author:  Requires a name-sorted BAM file." << endl << endl;
+    cerr << "NOTE:  Requires a name-sorted BAM file." << endl << endl;
     // end the program here
     exit(1);
 }

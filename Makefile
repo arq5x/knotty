@@ -14,7 +14,8 @@ export BT_ROOT  = src/utils/BamTools/
 
 
 SUBDIRS = $(SRC_DIR)/clipper \
-          $(SRC_DIR)/merger
+          $(SRC_DIR)/merger \
+          $(SRC_DIR)/bamToFastq
 
 UTIL_SUBDIRS =	$(SRC_DIR)/utils/lineFileUtilities \
 				$(SRC_DIR)/utils/bedFile \

@@ -134,8 +134,13 @@ int main(int argc, char* argv[]) {
     	BamAlignment bam1, bam2;
     	while (reader.GetNextAlignment(bam1)) {		
             
+            // slurp the other end of the pair
             reader.GetNextAlignment(bam2);
-
+            if (bam1.Name != bam2.Name) {
+                cerr << "Error: alignments are expected to come in pairs. Is your Bam sorted by query? Exiting." << endl;
+                exit(1);
+            }
+            
             // get the seqs and quals
     		string seq1  = bam1.QueryBases;
     		string qual1 = bam1.Qualities;
